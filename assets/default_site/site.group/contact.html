@@ -1,0 +1,189 @@
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<?php //$L1 = TRUE; $A5 = TRUE; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Contact EMJ | EMJ</title>
+<meta name="description" content="">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php
+    $activeForm = null;
+    	foreach($_REQUEST as $url => $val )
+        {
+        	$params = substr($url,1);
+            $param_parts = explode('/',$params);
+            if(isset($param_parts[2]))
+           		$activeForm = trim($param_parts[2]);
+        
+        }
+
+
+?>
+
+
+<?php 
+// make this dynamic
+preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png', 'img/form-error-arrow.png', 'img/form-submit-bg-hover.png', 'img/form-submit-bg.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        <article class="col-sm-12 content fullWidth">
+            
+                <div class="pageTitle group">
+                    <div>
+                    	<h1>Contact Us</h1>
+                    </div> 
+                    
+                </div><!-- END .pageTitle -->
+                
+                <div class="col-sm-5 contact noPadL">
+                	<img src="{site_url}images/contact.png" class="img-responsive full">
+                    
+                    <h3>Corporate Headquarters</h3>
+                    <p>10650 Alameda Street<br>
+					Lynwood, CA 90262</p>
+                    
+                    <h4>Corporate/General Inquiries: </h4>
+                    <p>(323) 567-1122</p>
+                    
+                    <h4>Sales & Material Inquiries: </h4>
+                    <p>(800) 336-5365</p>
+                </div><!-- END .contact.left -->
+                
+                <div class="col-sm-7 contact formWrap">
+                	
+                 	<form method="post" action="">
+                   		<!-- THIS IS FOR CSRF PROTECTION THIS MUST BE ADDED TO ALL FORMS!!! (ok ok, fine... stop yelling) -->
+						<!-- just making sure everyone understands. -->
+                        <input type="hidden" name="XID" value="{XID_HASH}" />
+                        
+                        <input type="hidden" name="subject" value="General Inquiry" />
+                    	
+                        <h3>Reason for Inquiry:<br>
+						<em>Please select one.</em></h3>
+                        
+                        <div class="col-sm-6 half">
+                        	<a id="requestQuote" href="#" class="contactButton request-quote">Request Quote</a>
+                        </div>
+                        <div class="col-sm-6 half">
+                        	<a id="requestBlueBook" href="#" class="contactButton request-bluebook">Request Blue Book</a>
+                        </div>
+                        <div class="col-sm-6 half">
+                        	<a id="generalInquiry" href="#" class="contactButton general-inquiry">General Inquiry</a>
+                        </div>
+                        <div class="col-sm-6 half">
+                        	<a id="contactLocation" href="#" class="contactButton contact-location">Contact Location</a>
+                        </div>
+                        <div class="col-sm-6 half">
+                        	<a id="logistics" href="#" class="contactButton logistics">Logistics</a>
+                        </div>
+                        <div class="col-sm-6 half">
+                        	&nbsp;
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <br>
+                        <h3>Contact Information:</h3>
+                        
+                        <div class="col-sm-6 half">
+                        	<input type="text" class="input req" name="firstname" placeholder="First Name*">
+                        </div>
+                        <div class="col-sm-6 half">
+                        	<input type="text" class="input req" name="email" placeholder="Email Address*">
+                        </div>
+                        
+                        <div class="col-sm-6 half">
+                        	<input type="text" class="input req" name="lastname" placeholder="Last Name*">
+                        </div>
+                        
+                        <div class="col-sm-6 half">
+                        	<input type="text" class="input" name="phone" placeholder="Phone Number">
+                        </div>
+                        
+                        <div class="col-sm-6 half">
+                        	<input type="text" class="input" name="companyname" placeholder="Company Name">
+                        </div>
+                        <div class="col-sm-6 half canBeHidden">
+                        	<input type="text" class="input" name="zipcode" placeholder="Zip Code">
+                        </div>
+                        
+                        <div id="formFiller" class="hidden">
+                        	<div class="col-sm-12 full">
+                            	<input type="text" class="input req" name="address" placeholder="Address*">
+                            </div>
+                            <div class="col-sm-6 half split">
+                            	<div class="noPadL noPadR col-xs-8">
+                                	<input type="text" class="input req" name="city" placeholder="City*">
+                            	</div>
+                            	<div class="noPadR noPadL col-xs-4">
+                                	<input type="text" class="input req" name="state" placeholder="State*">
+                                </div>
+                             </div>
+                             <div class="col-sm-6 half">
+                             	<input type="text" class="input req" name="zipcode" placeholder="Zip Code*">
+                             </div>
+                        </div>
+                        
+                       <!-- <div class="col-sm-12 full">
+                        	<select name="" class="select req">
+                            	<option value="">Subject*</option>
+                            	<option value="1">Value 1</option>
+                            </select>
+                        </div>-->
+                        
+                        <div class="col-sm-12 full">
+                        	<textarea placeholder="Questions and Comments..."></textarea>
+                        </div>
+                        
+                        <div class="col-sm-4 third">
+                        	<input class="submitButton" name="submit" type="submit" value="Submit">    
+                        </div>
+                        <div class="col-sm-8"></div>
+                    </form>
+                    
+                </div><!-- END .contact.left -->
+                
+        </article><!-- END article.content -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+</body>
+
+<?php include(ROOT_PATH.'layouts/footer.php'); ?>
+
+
+<script type="text/javascript">
+
+(function($){
+	$(function(){
+		var activeForm = '<?php echo $activeForm; ?>';
+		
+		if( activeForm != '')
+			$('.'+activeForm).trigger('click');
+		
+		listblock('div.listBlock');
+		
+	
+	});
+})(jQuery);
+</script>
+</html>

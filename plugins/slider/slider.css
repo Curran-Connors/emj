@@ -1,0 +1,20 @@
+/*
+Plugin Name: Slider by TD
+
+Notes:
+*/
+
+.slider { background:#fff; position:relative; overflow:hidden;}
+
+.sliderNav { position:relative; background:#E87511; height:30px;text-align:center; z-index:999;}
+.sliderNav a { position:absolute; top:0; }
+.sliderNav #next { right:0;}
+.sliderNav #prev { left:0;  visibility:hidden;}
+.sliderTitle { color:#fff; text-transform:uppercase; font-size:11px; line-height:30px; }
+
+.slideText { padding:20px; }
+
+.slideWrap { position:absolute; left:0; top:30px;}
+
+.slide { float:left; }
+.slide img { width:100%; }

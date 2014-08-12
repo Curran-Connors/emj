@@ -1,0 +1,179 @@
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>EMJ</title>
+<meta name="description" content="">
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php  preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png')); ?>
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<?php /* CHANGE */ ?>
+<section class="ticketSlider desktopSlider secondLevel">
+
+	<div id="unleash_container" class="hide-for-small">
+        <div id="slideshow-wrapper">
+        
+            
+            {exp:channel:entries 
+            			channel="home_page_slider" 
+                        orderby="slider_weight" 
+                        search:slider_language="{countrycode}"
+                        limit="3"
+             }
+                <div id="slideshow-{count}" data-slideNo="{count}" class="box slideshow-image" rel="{relative_titles}">
+                	{if count == 1}
+                        <div class="slideshow-content content text-left">
+                    {if:elseif count == 2 }
+                    
+                        <a href="#" id="ticketPrev" class="ticketLink"><span></span></a>
+                        <div class="slideshow-content content text-center">
+                    {if:elseif count == 3 }
+                        <a href="#" id="ticketNext" class="ticketLink"><span></span></a>
+                        <div class="slideshow-content content text-right">
+                    {/if}
+                            <h2>{slider_slogan}</h2>
+                            <div class="btn-group">
+                            
+                                <a class="btn gold ticketButton" href="{path='{slider_btn_link_1}'}">{slider_btn_text_1}</a>
+                                {if slider_btn_text_2 != '' }
+                                    <a class="btn blue ticketButton" href="{path='{slider_btn_link_2}'}">{slider_btn_text_2}</a>
+                                {/if}
+                            </div>
+                        </div>
+                        <img class="slide-image grayscale" src="{slider_image}">
+                        <img class="slide-image color" src="{slider_image_bw}">
+                </div>
+            {/exp:channel:entries}      
+        </div>  <!-- slideshow div end -->
+        <div class="unleash_loader"></div>
+    </div>
+    
+</section><!-- END section.slider -->
+
+<section class="ticketSlider mobileSlider secondLevel group">
+
+{exp:channel:entries 
+            channel="home_page_slider" 
+            orderby="slider_weight" 
+            search:slider_language="{countrycode}"
+            search:slider_weight="2"
+            limit="1"
+ }        
+		<div class="ticketSlide ticketSlide1">
+     		<h2>{slider_slogan}</h2>
+        
+    </div><!-- END .ticketSlide -->
+    <a class="btn gold ticketButton" href="{path='{slider_btn_link_1}'}">{slider_btn_text_1}</a>
+    {if slider_btn_text_2 != '' }
+        <a class="btn blue ticketButton" href="{path='{slider_btn_link_2}'}">{slider_btn_text_2}</a>
+    {/if}
+{/exp:channel:entries}      
+  
+</section><!-- END section.mobileSlider -->
+
+<?php /* END OF CHANGE */
+ ?>
+<section class="topFooter">
+	<div class="container">
+{exp:channel:entries channel="home_page_tf" limit="3" orderby="weight" search:language="{countrycode}"}
+        <div class="col-sm-4 widget infoBox">
+        	{if icon_img != "" }
+        		<div class="col-xs-3 icon"><img src="{icon_img}" class="img-responsive"></div>
+            {/if}
+            <div class="text col-xs-9">
+            	<h3>{title}</h3>
+                <p>{hp_ft_blurb}</p>
+                <a href="{hp_ft_link}">{hp_ft_link_title}</a>
+            </div><!-- END .text -->
+   			<div class="clear"></div>
+        </div><!-- END .widget -->
+{/exp:channel:entries}
+        
+    </div><!-- END .container -->
+</section><!-- END .topFooter -->
+<?php include(ROOT_PATH.'layouts/footer.php'); ?>
+
+</body>
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+<script type="text/javascript">
+(function($){
+	$(function(){
+		var unleash = '';
+				
+		var initialSlide = 2; // here is where yo ucan customize which slide shows first (1, 2, or 3)
+		
+		$(window).load(function(){
+			
+			// Choose the intitial button text based on the intial slide selected:
+			var buttons = $('#slideshow-'+initialSlide).attr('rel');
+			buttons 	= buttons.split('|'); 
+			
+			// Make sure the right id is associated with both:
+			if(initialSlide == 1) { var leftId = 'ticketNext'; var rightId = 'ticketNext'; }
+			if(initialSlide == 2) { var leftId = 'ticketPrev'; var rightId = 'ticketNext'; }
+			if(initialSlide == 3) { var leftId = 'ticketPrev'; var rightId = 'ticketPrev'; }
+	
+			
+			// Put it all together:				
+			$('#slideshow-2 a.ticketLink').attr('id', leftId).find('span').text(buttons[0]);
+			$('#slideshow-3 a.ticketLink').attr('id', rightId).find('span').text(buttons[1]);
+				
+			
+			$('div.slideshow-image').css({ opacity:0, 'visibility':'visible'}).animate({ opacity:0 }, 'fast', function(){
+				$('div.slideshow-image').animate({ opacity:1 });
+			});
+		});
+		
+		// init accordion slideshow
+		unleash = $("#slideshow-wrapper").unleash({
+				  slideshow: false,
+				  slide_height: 571,
+				  //slide_width:670,
+				  initially_open_slide:initialSlide,
+				  }).data("plugin_unleash");
+				  
+		/* TicketSlider */
+		$('.ticketLink').on({
+			click:function(e){
+				e.preventDefault();
+				
+				
+				var action = $(this).attr('id');
+				var currentSlide = unleash.CurrentSlide();
+				var parent = $(this).parent();
+				var slideno = $(parent).attr('data-slideNo');
+			
+				
+				if(action == "ticketPrev" )
+				{
+					e.stopPropagation();
+
+					slideno--;
+					$('#slideshow-'+slideno).click();
+	
+				}
+			}
+			
+		});
+				  
+				  
+	});
+})(jQuery);
+	
+		
+</script>
+</html>

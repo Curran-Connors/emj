@@ -1,0 +1,152 @@
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<?php
+	$L4 = TRUE;
+    
+    if(isset($_REQUEST['keywords']) )
+    {
+        $hasKeyword = true;
+        $keywords = $_REQUEST['keywords'];
+    }
+    else
+    {
+        $hasKeyword = false;
+        $keywords = '';
+        $originalSearch = '';
+    }
+    if( $hasKeyword)
+    {
+    	$originalSearch = $keywords;
+        // shoot keywords over to the java application
+        if( strstr($keywords, '"') !== false )
+        	$keywords = str_replace('"',"'",$keywords);
+        $JSONresults = exec('java -jar "'.ROOT_PATH.'/pdf_indexer/PDF_Indexer.jar" search "'.$keywords.'"');
+        
+    }
+    else
+    {
+        $JSONresults = '[]';
+    }
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Blue Book | EMJ</title>
+<meta name="description" content="">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        <article class="col-sm-12 content">
+            
+            <div class="col-sm-12 spaced">
+                <div class="pageTitle oneLine group">
+					<h1>Blue Book</h1>
+                </div><!-- END .pageTitle -->
+                
+                <h4 class="highlight">The EMJ Stock List and Reference Book</h4>
+                <div class="col-sm-8 noPadL">
+                	<p>This book contains descriptions, sizes, and weights of 25,000 (twenty-five thousand) items of metal normally carried in stock for immediate delivery and technical data needed to help you select the right material for the job, and a wealth of practical information on the use of metal products.</p>
+            	</div>
+                <div class="col-sm-4 text-right">
+                	<p><a href="{path='site/contact/request-bluebook'}" class="link">Request a Hard Copy</a></p>
+                </div>
+                
+                <div class="clear"></div>
+            	
+                
+                <ul class="itemList withSearch results">
+                	<li class="first group">
+                        <div class="col-sm-8 noPadL title">
+                            <h3>Showing Results for: <?php 
+                            if( !$keywords)
+	                        {
+                            	echo "<span>All Documents</span>"; 
+                            }
+    						else
+                            {
+	                        	if( strstr($keywords,","))
+                                {
+                                	$keywords = str_replace(",",", ",$keywords);
+                                }	
+                                echo "<span>\"".$keywords."\"</span>"; 
+                                
+                            }
+                            ?> &nbsp;&nbsp;<a class="clearSearch" href="{path='site/blue_book'}">clear search</a></h3>
+                        </div><!-- END .itemList.withSearch -->
+                       
+                        
+                        <div class="col-sm-4 noPadR text-right search">
+                        	<form id="search-keyword" action="{path='site/blue_book_search'}" method="post">
+                            	<input type="hidden" name="XID" value="{XID_HASH}" />
+                            	<input type="search" name="keywords" class="search" placeholder="Search Keywords" value='<?php echo $originalSearch; ?>'>
+                            </form>
+                        </div><!-- END .search -->
+                    </li>
+                    <div class="clear"></div>
+                    <?php
+                        /*
+                         *this is where the JSON results go begins 
+                         */
+                        $JSONresults = str_replace("JSON_OBJECT:","",$JSONresults);
+                        $results = json_decode($JSONresults);
+                         
+                        foreach( $results as $i => $objResults)
+                        {
+                            foreach($objResults as $pdf_id =>$obj)
+                            {
+                            	$general = $obj[0]->general;
+                                $pages   = $obj[1]->pages;
+                                
+                                echo '<li><a id="tofContents" href="{site_url}'.$general->pdf_path.'" target="_blank">'.$general->pdf_title.'<span class="previewWindow"></span></a> PDF<ul>';
+                                // add loop for page numbers
+                                foreach ($pages->pageno as $key => $pageno)
+                                {
+                                	echo '<li><a id="preview" href="{site_url}'.$general->pdf_path.'#page='.$pageno.'" target="_blank">Page '.$pageno.'<span class="previewWindow"></span></a>';
+                                }
+                                echo "</ul></li>";
+                            }
+                        }
+                    ?>            
+                    <div class="col-sm-5 disclaimer noPadL">
+                    	<p>Results may only take you to the first page depending your browser and Adobe Acrobat versions and settings. </p>
+                	</div><!-- END .disclaimer -->
+                    <div class="col-sm-7"></div>
+                </ul>
+                
+            </div><!-- END .col-sm-12 -->
+            
+        </article><!-- END article.content -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+</body>
+
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+
+<script type="text/javascript">
+$(function(){
+		
+
+})
+</script>
+</html>

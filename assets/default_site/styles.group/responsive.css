@@ -1,0 +1,71 @@
+/*
+	RESPONSIVE STYLESHEET
+	ready to go...
+*/
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+	div.logo { padding-right: 0; }
+	.logo a { margin-top: 15px; }
+	div.logo a img { max-height:49px; }
+	
+	.mainNav a { padding: 0 15px; font-size: 12px; line-height: 80px;}
+	
+	.topNav input.searchButton { width: 125px; }
+	
+	.widget.infoBox .icon { padding-right: 10px; }
+	.widget.infoBox p { font-size: 12px; }
+	.widget.infoBox a { font-size: 12px; }
+	
+	.topFooter { padding: 50px 0; }
+	nav.footerNav { padding-left: 10px; }
+	
+	nav.interiorNav a {margin: 0 20px;font-size: 13px; }
+	
+	.widget.cta { padding: 0 10px; }
+	.widget.cta h4 { font-size: 11px; }
+	.widget.cta h3 { font-size: 15px; }
+	.widget.cta p { font-size: 12px; }
+	.widget.cta a { font-size: 12px; }
+	
+	article.content { padding-top: 55px; }
+	article.fullWidth { padding-left: 50px; padding-right: 50px;}
+	
+	article .right { padding-right: 40px; }
+	article.content h1 { font-size: 22px; }
+	
+	article.content h4.highlight { margin-bottom: 20px; }
+	article.content p {font-size: 13px; line-height: 20px; }
+	
+	.team .title h3 { font-size: 16px; }
+	article.content .team p { font-size: 12px; line-height: 18px; }
+	
+	article.content .interiorContent .intRight { padding-top: 15px; padding-bottom: 12px; }
+	
+	
+	.widget.note { width: 24.585%; }
+	
+	.empty .widget.cta.col-sm-4 { width: 32.964%;padding-left:20px; padding-right:20px; }
+	.empty .widget.cta.col-sm-4 p { line-height: 19px; }
+	
+	article .left.spaced { padding-right: 25px; }
+	article .spaced { padding-left: 40px; padding-right: 40px; }
+	
+	aside.sidebar.edi { padding-top: 10px; }
+	
+	div.errorText { width: 150px; }
+	div.errorText p {padding: 4px 0px; font-size: 12px; }
+	
+	.widget.infoBox .text { padding-left: 0; width: //;  }
+}
+
+@media (max-width: 768px) {
+	
+}
+
+@media (max-width: 767px) { 
+
+}

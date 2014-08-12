@@ -1,0 +1,9 @@
+/* IE 9 CSS Document */
+
+.empty .widget.cta.col-sm-4 { width: 33.04%; }
+
+@media (max-width: 992px) { 
+	
+	.empty .widget.cta.col-sm-4 { width: 32.969%; }
+	
+}

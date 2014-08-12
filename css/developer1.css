@@ -1,0 +1,16 @@
+/* DEVELOPER 1 CSS */
+/* Add your custom styles here... */
+div#map-canvas {
+    height: 475px;
+    width: auto;
+    margin-bottom: 30px;
+}
+
+.gm-style-iw {
+    width: 93% !important; 
+	overflow: hidden !important;
+    height: 100% !important;
+}
+.modal-body{
+	padding:5px !important;
+}	

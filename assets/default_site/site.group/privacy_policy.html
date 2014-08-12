@@ -1,0 +1,62 @@
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<?php $L4 = TRUE; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Privacy Policy | EMJ</title>
+<meta name="description" content="">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        <article class="col-sm-12 content">
+            {exp:channel:entries channel="inner_page" limit="1" search:page_language="{countrycode}" search:header_title="Privacy Policy"}
+                <div class="col-sm-12 spaced">
+                    <div class="pageTitle oneLine group">
+                        <h1>{header_title}</h1>
+                    </div><!-- END .pageTitle -->
+                    {body_content}
+        
+                </div><!-- END .col-sm-12 -->
+			{/exp:channel:entries}
+            <div class="col-sm-12 spaced">
+            	<ul class="itemList">
+                    {exp:channel:entries channel="inner_page_pdfs" search:page_to_display="Privacy Policy"}
+            			<li><a href="{inner_page_pdf}" target="_blank" >{title}</a> PDF</li>
+                    {/exp:channel:entries}
+                </ul>
+            </div><!-- END .col-sm-12 -->			
+        </article><!-- END article.content -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+<?php include(ROOT_PATH.'layouts/footer.php'); ?>
+
+</body>
+
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+
+<script type="text/javascript">
+$(function(){
+
+})
+</script>
+</html>

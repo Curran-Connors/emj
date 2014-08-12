@@ -1,0 +1,80 @@
+<?php require_once('includes/initialize.php'); ?>
+<?php $L4 = TRUE; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>EDI | EMJ</title>
+<meta name="description" content="">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        <article class="col-sm-12 content">
+            
+            <div class="col-sm-9 left spaced">
+            	<div class="pageTitle group oneLine">
+                	<div>
+                        <h1>Electronic Data Interchange</h1> 
+                    </div> 
+                    <img src="{site_url}img/icon-edi.png" class="img-responsive icon hideOnMobile">
+                    <img src="{site_url}img/icon-edi-noshadow.png" class="img-responsive icon hideOnDesktop">
+                </div><!-- END .pageTitle -->
+                <p>For our customers that require a fully integrated order, purchasing, accounts receivable and accounts payable system, EDI is the answer. Order requests are sent directly to EMJ by your company’s computer system, and acknowledgements are sent back by ours. This method is designed for our medium to large customers.
+<br><br>
+EMJ has embraced EDI as one of the many value-added services we are able to provide our customers and suppliers. We are fully capable of sending and receiving the following electronic documents utilizing the time saving technology that is EDI.
+<br><br>
+If EDI sounds like the business solution for your company, or you’d just like to learn more about it, please e-mail us or call us at (866) 679 3953. Electronic Data Interchange- One of the many Value-Added Services EMJ proudly offers to Make a Material Difference.</p>
+            </div><!-- END .col-sm-3 -->
+            
+            <div class="col-sm-3">
+            	<aside class="sidebar edi">
+                    <h3>Customers</h3>
+                    <p class="info">ThisIsAFileName <a href="#">PDF</a></p>
+                    <p class="info">ThisIsAFileName <a href="#">PDF</a></p>
+                    <p class="info">ThisIsAFileName <a href="#">PDF</a></p>
+                    <p class="info">ThisIsAFileName <a href="#">PDF</a></p>
+                    
+                    <h3>Vendors</h3>
+                    <p class="info">ThisIsAFileName <a href="#">PDF</a></p>
+                    <p class="info">ThisIsAFileName <a href="#">PDF</a></p>
+                    <p class="info">ThisIsAFileName <a href="#">PDF</a></p>
+                    <p class="info">ThisIsAFileName <a href="#">PDF</a></p>
+				</aside><!-- END aside.sidebar.edi -->
+            </div><!-- END .col-sm-3 -->
+            
+        </article><!-- END article.content -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+<?php include(ROOT_PATH.'layouts/footer.php'); ?>
+
+</body>
+
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+
+<script type="text/javascript">
+$(function(){
+		
+
+})
+</script>
+</html>

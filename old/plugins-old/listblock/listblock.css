@@ -1,0 +1,21 @@
+/*
+Plugin Name: Listblock by TD
+
+Notes:
+*/
+
+.listBlock { background:#E1E1E1; }
+
+.listBlock .nav {  }
+.listBlock .nav ul {  }
+.listBlock .nav li {  }
+.listBlock .nav li a { background:#FAFAFA;font-size:14px; color:#1B3D93; display:block;padding: 15px 26px; }
+.listBlock .nav li a:hover { }
+.listBlock .nav li.selected a, .listBlock .nav li a:hover { color:#fff; background:#E4C26C; text-decoration:none; }
+
+.listBlock .wrap { position:relative; background:#FAFAFA;}
+
+.listBlock .listContent { display:none; opacity:0; z-index:0;}
+.listBlock .listContent.selected { display:block; opacity:1; z-index:10;}
+.listBlock .listContent h4 { color:#193D92; font-size:18px; margin-bottom:10px;}
+.listBlock .listContent p { font-size:13px; color:#666;line-height: 21px; }

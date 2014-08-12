@@ -1,0 +1,296 @@
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<?php $L1 = TRUE; $A5 = TRUE; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>About EMJ | EMJ</title>
+<meta name="description" content="">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        {embed="assets/about_sub_nav" language="<?php echo $language;?>" associated_menu="About Sub Nav"}
+
+        <article class="col-sm-12 content fullWidth">
+            
+                <div class="pageTitle group">
+                    <div>
+                        <span>Where We Are:</span>
+                        <h1>Locations</h1>
+                    </div> 
+                    <?php /* CHANGE */ ?>
+                    <img src="{site_url}img/icon-location.png" class="img-responsive icon hideOnMobile">
+                    <img src="{site_url}img/icon-location-noshadow.png" class="img-responsive icon hideOnDesktop">
+                    <?php /* END OF CHANGE */ ?>
+                    <nav class="locationNav">
+                        <ul class="list-inline">
+                    		<li class="view">View By:</li>
+                        	<li class="selected"><a href="#">Map</a></li>
+                        	<li><a href="#">List</a></li>
+                        </ul>
+                    </nav><!-- END .locationNav -->
+                </div><!-- END .pageTitle -->
+                
+               <div class="location map selected">
+                   	<div id="map-canvas"></div>
+                    <div class="interiorContent group">
+            {exp:channel:entries 
+                        channel="locations" 
+                        search:location_headquarters="Yes"
+                        limit="1"
+             }     
+                        <div class="col-sm-4 intLeft">
+                            <img src="{location_image}" class="img-responsive">
+                        </div><!-- END .left -->                   
+                        <div class="col-sm-8 intRight">
+                            <div class="col-sm-6 subLeft">
+                                <h3>{location_name}</h3>
+                                <p>{location_address}<br>
+                                {location_city}, {location_state} {location_zip}</p>
+                            </div>
+                            
+                            <div class="col-sm-6 subRight">
+                                <h4>Corporate/General Inquiries: </h4>
+                                <p>{location_phone_1}</p>
+                                
+                                {if location_phone_2 != ''}
+                                	<h4>Sales & Material Inquiries: </h4>
+                               		<p>{location_phone_2}</p>
+                                {/if}
+                            </div>
+                            
+                            <div class="clear"></div>
+                                                    
+                            <div class="text-right subFooter">
+                                <a href="{path='site/contact/contact-location'}" class="link">Contact Us</a>
+                                
+                                <!--<a href="#" class="link">Get Directions</a>-->
+                            </div>
+                            
+                        </div><!-- END .right -->
+            {/exp:channel:entries}      
+                    </div><!-- END .interiorContent -->
+               </div><!-- END .location.map -->
+               
+                
+               <!-- ** NOTE: The first location in the list is set up a little different from the rest, as according to the design. **  -->
+               <!-- ** NOTE: set up 2 channel loops one for corporate headquarters. one for the rest. 								**  -->
+               
+               
+               <div class="location list">
+            {exp:channel:entries channel="locations" search:location_headquarters="Yes|No" sort="asc"}  
+            	{if count == 1 }  
+                    <div class="interiorContent group first">
+                {if:else}
+                	<div class="interiorContent group">
+                {/if}
+                        <div class="col-sm-4 intLeft">
+                            <img src="{location_image}" class="img-responsive">
+                        </div><!-- END .left -->                   
+                        <div class="col-sm-8 intRight">
+                            <div class="col-sm-6 subLeft">
+                                <h3>{location_name}</h3>
+                                <p>{location_address}<br>
+                                {location_city}, {location_state} {location_zip}</p>
+                            </div>
+                {if location_headquarters == "Yes"}            
+                            <div class="col-sm-6 subRight">
+                                <h4>Corporate/General Inquiries: </h4>
+                                <p>{location_phone_1}</p>
+                                
+                                {if location_phone_2 != ''}
+                                	<h4>Sales & Material Inquiries: </h4>
+                               		<p>{location_phone_2}</p>
+                                {/if}
+                            </div>
+               	{if:else}
+                            <div class="col-sm-6 subRight">
+                                <h4>Phone: {location_phone_1}</h4>
+                                {if location_phone_2 != ''}
+                                	<h4>Fax: {location_phone_2}</h4>
+                                {/if}
+                            </div>
+                {/if}             
+                            <div class="clear"></div>
+                                                    
+                            <div class="text-right subFooter">
+                                <a href="{path='site/contact/contact-location'}" class="link">Contact Us</a>
+                            </div>
+                            
+                        </div><!-- END .right -->
+                        
+                    </div><!-- END .interiorContent -->
+            {/exp:channel:entries}      
+               </div><!-- END .location.list --> 
+        </article><!-- END article.subContent -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+
+<!--
+{exp:channel:entries 
+            channel="locations" 
+            search:location_headquarters="Yes|No"
+            sort="asc"
+ }     
+    <!-- Modal -->
+    <div class="modal fade" id="location-modal-{count}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-smr">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <div class="modal-body">
+          
+            <div class="interiorContent group"> 
+                <h3>{location_name}</h3>
+                <p>{location_address}<br>
+                {location_city}, {location_state} {location_zip}</p>                              
+                {if location_headquarters == "Yes"}            
+                        <h4>Corporate/General Inquiries: </h4>
+                        <p>{location_phone_1}</p>
+                            
+                        <h4>Sales & Material Inquiries: </h4>
+                        <p>{location_phone_2}</p>                                             
+               	{if:else}
+                        <h4>Phone:</h4>
+                        <p>{location_phone_1}</p>
+                        {if location_phone_2 != ''}
+                        	<h4>Fax:</h4>
+                            <p>{location_phone_2}</p>
+                        {/if}              
+              	{/if}             
+               <img src="{location_image}" class="img-responsive">   
+                                        
+            </div><!-- END .interiorContent -->
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+ {/exp:channel:entries}  
+        
+
+
+<?php include(ROOT_PATH.'layouts/footer.php') ?>
+
+</body>
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+<script type="text/javascript">
+$(function(){
+	
+function initialize() {
+	var map;
+	var bounds = new google.maps.LatLngBounds();
+	var mapOptions = {
+	  center: new google.maps.LatLng(37.09024, -95.712891),
+	  zoom: 4,
+	  mapTypeControl: false,
+	  scrollwheel: false,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(document.getElementById("map-canvas"),
+		mapOptions);
+
+	// Multiple Markers
+	var markers = [
+		{exp:query sql="SELECT * FROM emj_location_markers order by entry_id" }
+			['{title}',{lat},{lng},{count}],
+		{/exp:query}
+	];
+						
+	// Info Window Content
+	var infoWindowContent = [
+								{exp:channel:entries 
+											channel="locations" 
+											orderby="entry_id"
+											sort="asc"
+											search:location_headquarters= "Yes"
+								 }     
+									   ['       <div class="modal-body">'+
+									   '         <div class="interiorContent group"> '+
+									   '             <h3>{location_name}</h3>'+
+									   '             <p>{location_address}<br>'+
+									   '             {location_city}, {location_state} {location_zip}</p>'+
+									   '                     <h4>Corporate/General Inquiries:</h4>'+
+									   '                     <p>{location_phone_1}</p>'+
+									   '                     <h4>Sales & Material Inquiries:</h4>'+
+									   '                     <p>{location_phone_2}</p>'+
+									   '            <img src="{location_image}" class="img-responsive">'+
+									   '         </div><!-- END .interiorContent -->'+
+									   '       </div>'],
+								 {/exp:channel:entries}									
+								 {exp:channel:entries 
+											channel="locations" 
+											orderby="entry_id"
+											sort="asc"
+											search:location_headquarters= "No"
+								 }     
+									   ['       <div class="modal-body">'+
+									   '         <div class="interiorContent group"> '+
+									   '             <h3>{location_name}</h3>'+
+									   '             <p>{location_address}<br>'+
+									   '             {location_city}, {location_state} {location_zip}</p>'+
+									   '                     <h4>Phone:</h4>'+
+									   '                     <p>{location_phone_1}</p>'+
+									   '                     <h4>Fax:</h4>'+
+									   '                     <p>{location_phone_2}</p>'+
+									   '            <img src="{location_image}" class="img-responsive">'+
+									   '         </div><!-- END .interiorContent -->'+
+									   '       </div>'],
+								 {/exp:channel:entries}	
+							];
+	// Display multiple markers on a map
+	var infoWindow = new google.maps.InfoWindow(), marker, i;
+	
+	// Loop through our array of markers & place each one on the map  
+	for( i = 0; i < markers.length; i++ ) {
+		var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+		marker = new google.maps.Marker({
+			position: position,
+			map: map,
+			animation: google.maps.Animation.DROP,
+			title: markers[i][0]
+		});
+		
+		// Allow each marker to have an info window    
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+				infoWindow.setContent(infoWindowContent[i][0]);
+				infoWindow.open(map, marker);
+			}
+		})(marker, i));
+	
+	}
+	
+	// Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+	var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+		this.setZoom(4);
+		google.maps.event.removeListener(boundsListener);
+	});
+	
+}
+	listblock('div.listBlock');
+   
+   
+      initialize();
+
+
+})
+</script>
+</html>

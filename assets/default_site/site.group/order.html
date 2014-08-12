@@ -1,0 +1,81 @@
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<?php $L4 = TRUE; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Order Online | EMJ</title>
+<meta name="description" content="">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>"> 
+
+<?php preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png', 'img/form-submit-bg-hover.png', 'img/form-submit-bg.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        <article class="col-sm-12 content">
+            
+            <div class="col-sm-4 left text-right">
+            	<img src="{site_url}images/online.png" class="img-responsive hideOnMobile">
+            </div><!-- END .col-sm-3 -->
+            
+            <div class="col-sm-8 right">
+            	<div class="pageTitle">
+					<h1>Order Online Using E-Metals&reg;</h1>
+                </div><!-- END .pageTitle -->
+                <p>Our reliable, user friendly E-Metals® website allows customers to check material availability of all 40,000 stocked items. The buyer can obtain pricing, save the quote, place orders on line and track order status in real time. The website is secure, available 24/7 and eliminates any delay in securing the metals, and the accurate information, that the buyer needs.</p>
+                <a href="https://emetals.rsac.com/eMetals/eMetalsLogin.asp" class="button" target="_blank">Visit E-Metals&reg;</a>
+            </div><!-- END .col-sm-3 -->
+            
+        </article><!-- END article.content -->
+        
+        <article class="col-sm-12 subContent empty">
+        	<div class="col-sm-4 widget cta">
+            	<img src="{site_url}img/icon-phone.png" class="img-responsive icon">
+                <h3>Phone/Fax</h3>
+                <p>EMJ provides customer service that is second to none. We have the capability of conducting business with customers through customized Business-to-Business solutions using new technologies or through traditional ordering channels such as phone or fax. Find the phone and fax number to an EMJ branch that serves your area</p>
+                <a href="{path='about/where_we_are'}">Find Locations</a>
+            </div><!-- END .col-sm-3 -->
+            <div class="col-sm-4 widget cta">
+            	<img src="{site_url}img/icon-b2b.png" class="img-responsive icon">
+                <h3>B2B (E-Link)</h3>
+                <p>If you are interested in using E-Link as your ordering process or just want to find out more, you can use the EMJ Locator to contact the EMJ office nearest you. We will then have your Outside Salesperson communicate with our Information Technology (IT) department. Of course, you can also contact us.</p>
+                <a href="{path='site/contact'}">Contact Us</a>
+            </div><!-- END .col-sm-3 -->
+            <div class="col-sm-4 widget cta last">
+            	<img src="{site_url}img/icon-edi.png" class="img-responsive icon">
+                <h3>EDI</h3>
+                <p>For our customers that require a fully integrated order, purchasing, accounts receivable and accounts payable system, EDI is the answer. Order requests are sent directly to EMJ by your company’s computer system, and acknowledgements are sent back by ours. This method is generally designed for our medium to large customers.</p>
+                <a href="{path='site/edi'}">Get Started with EDI</a>
+            </div><!-- END .col-sm-3 -->
+        </article><!-- END article.subContent -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+<?php include(ROOT_PATH.'layouts/footer.php'); ?>
+
+</body>
+
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+
+<script type="text/javascript">
+$(function(){
+
+})
+</script>
+</html>

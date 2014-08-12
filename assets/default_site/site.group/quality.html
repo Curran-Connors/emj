@@ -1,0 +1,385 @@
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<?php $L4 = TRUE; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Quality | EMJ</title>
+<meta name="description" content="">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png', 'img/form-submit-bg-hover.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        <article class="col-sm-12 content">
+            
+            <div class="col-sm-12 spaced qualityPage">
+            	<div class="col-sm-9 noPadL">
+                    <div class="pageTitle oneLine group">
+                        <h1>Quality</h1>
+                    </div><!-- END .pageTitle -->
+               		
+                    <h3>Customer Satisfaction Survey</h3>
+                    
+                    <p>EMJ is committed to customer satisfaction. Only through continuous improvement will EMJ obtain complete customer satisfaction.
+<br><br>
+					Please use the form below to submit your comments about our Quality System.</p>
+                    
+                    <div class="contact formWrap noPadL">
+                        <form method="post" action="">
+                        
+                            <p>Contact Information:</p>
+                            
+                            <div class="col-sm-6 half noPadL">
+                                <input type="text" class="input req" name="firstname" placeholder="First Name*">
+                            </div>
+                            <div class="col-sm-6 half">
+                                <input type="text" class="input req" name="lastname" placeholder="Last Name*">
+                            </div>
+                            
+                            <div class="col-sm-6 half noPadL">
+                                <input type="text" class="input req" name="email" placeholder="Email Address*">
+                            </div>
+                            
+                            <div class="col-sm-6 half">
+                                <input type="text" class="input req" name="phone" placeholder="Phone Number*">
+                            </div>
+                            
+                            <div class="col-sm-6 half noPadL">
+                                <input type="text" class="input req" name="companyname" placeholder="Company Name*">
+                            </div>
+                            <div class="col-sm-6 half">
+                                <input type="text" class="input req" name="department" placeholder="Department*">
+                            </div>
+                            
+                            <div class="clear"></div>
+                            
+                            <br>
+                            
+                            <p>Using your experience with EMJ over the past six months, please rate EMJ in the following categories:<br>
+                            <em>Use a scale of one (1) to ten (10) where one is the lowest rating and ten is the highest rating.</em></p>
+                                                        
+                            <div class="table-responsive quality table-hover">
+                                <table class="table">
+                                        
+                                        <thead>
+                                            <th>&nbsp;</th>
+                                            <th>1</th>
+                                            <th>2</th>
+                                            <th>3</th>
+                                            <th>4</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                            <th>9</th>
+                                            <th>10</th>
+                                            <th>N/A</th>
+                                        </thead>
+                                        
+                                        <tbody>
+                                            <tr>
+                                                <td>Accuracy on Documentation</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op1">
+                                            </tr>
+                                            <tr>
+                                                <td>Delivery Performance</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op2">
+                                            </tr>
+                                            <tr>
+                                                <td>EMJ Inventory Levels</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op3">
+                                            </tr>
+                                            <tr>
+                                                <td>Material Identification</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op4">
+                                            </tr>
+                                            <tr>
+                                                <td>Packaging</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op5">
+                                            </tr>
+                                            <tr>
+                                                <td>Pricing</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op6">
+                                            </tr>
+                                            <tr>
+                                                <td>Quality of Product</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op7">
+                                            </tr>
+                                            <tr>
+                                                <td>Quality Performance</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op8">
+                                            </tr>
+                                            <tr>
+                                                <td>Quotation Response</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op9">
+                                            </tr>
+                                            <tr>
+                                                <td>Test Reports</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op10">
+                                            </tr>
+                                            <tr>
+                                                <td>Inside Sales Accessibility</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op11">
+                                            </tr>
+                                            <tr>
+                                                <td>Inside Sales Competency</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op12">
+                                            </tr>
+                                            <tr>
+                                                <td>Outside Sales Accessibility</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op13">
+                                            </tr>
+                                            <tr>
+                                                <td>Outside Sales Competency</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op14">
+                                            </tr>
+                                            <tr class="last">
+                                                <td>Overall Quality of EMJ</td>
+                                                <td><a href="#" class="qualityCheck" rel="1"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="2"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="3"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="4"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="5"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="6"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="7"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="8"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="9"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="10"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <td><a href="#" class="qualityCheck" rel="N/A"><img src="{site_url}img/radio.png" class="img-responsive"></a></td>
+                                                <input type="hidden" value="" name="op15">
+                                            </tr>
+                                        </tbody>
+                                        
+                                    </table>
+                            </div><!-- END .quality -->
+                            
+                            <div class="col-sm-12 full noPadL">
+                                <textarea placeholder="Questions and Comments..."></textarea>
+                            </div>
+                            
+                            <div class="col-sm-3 third noPadL">
+                                <input class="submitButton" name="submit" type="submit" value="Submit">    
+                            </div>
+                            <div class="col-sm-9">&nbsp;</div>
+                        
+                        </form>
+                	</div><!-- END .formWrap -->
+                </div>
+                
+                <div class="col-sm-3 noPadR">
+                	
+                    <aside class="sidebar edi">
+                	
+                        <h3>Our Quality Policy</h3>
+                        <p>The Earle M. Jorgensen Company is a provider of high quality, cost effective products and services.<br>
+                        <a href="{path='site/quality_policy'}" class="link">Read Our Quality Policy</a></p>
+                        
+                        <h3>Quality Documents</h3>
+                        <p class="info">Corporate ISO <a href="#">PDF</a></a>
+                        <p class="info">Quality Assurance Manual ISO 9001-2008 <a href="#">PDF</a></p>
+                        
+                        <h3>Technical Services</h3>
+                        <p>&bull; Metallurgists<br>
+                        &bull; Engineering Assistance<br>
+                        &bull; 12 Lead Assessors<br>
+                        &bull; 40 Internal Auditors<br>
+                        &bull; SPC<br>
+                        &bull; Test Report Imaging
+                        
+                        <br><br>
+                        
+                        Lloyd’s ISO 9001:2000 multisite certified QS-9000 at Processing Centers Focus on Improvement</p>
+                	</aside>
+                </div><!-- END .qualitySidebar -->
+                
+            </div><!-- END .col-sm-12 -->
+            
+            <div class="clear"></div>
+        </article><!-- END article.content -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+<?php include(ROOT_PATH.'layouts/footer.php'); ?>
+
+</body>
+
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+
+<script type="text/javascript">
+$(function(){
+	
+
+})
+</script>
+</html>

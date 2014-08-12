@@ -1,0 +1,59 @@
+<div id="top">
+    <div class="container">
+    	<div class="topWrapper col-sm-12 text-right">
+            <nav class="topNav">
+                <ul class="list-inline">
+                    <li><a href="{path='about/where_we_are'}">Locations</a></li>
+                    <li><a href="{path='site/contact'}">Contact Us</a></li>
+                    <li><a href="#">Register Now</a></li>
+                    <li><a href="{path='site/blue_book'}">Blue Book</a></li>
+                    <li><a href="#">Quick Reference</a></li>
+                    <li>
+						<div class="languageNav btn-group btn-input clearfix">
+							<button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+								<span data-bind="label"><img src="{site_url}img/icon-flag-eng.png" /> English</span> <span class="caret"></span>
+							</button>
+                  			<ul class="dropdown-menu" role="menu">
+                            	<li id=""><a href="#"><img src="{site_url}img/icon-flag-eng.png" /> English</a></li>                          
+                            	<li id=""><a href="#"><img src="{site_url}img/icon-flag-eng.png" /> French</a></li>                          
+                            	<li id=""><a href="#"><img src="{site_url}img/icon-flag-eng.png" /> Klingon</a></li>                          
+                         	</ul>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="search" class="searchButton">
+                    </li>
+                </ul>
+            </nav>
+        </div><!-- .topWrapper -->
+    </div><!-- END .container -->
+</div><!-- END #top -->
+
+<header>
+	<div class="container">
+    	<div class="logo col-sm-3">
+        	<a href="{site_url}"><img class="{site_url}img-responsive" src="{site_url}img/logo.png"></a>
+        </div><!-- END .logo -->
+        
+        <div class="navWrapper col-sm-9 text-right">
+        	<nav class="mainNav">
+                <ul class="list-inline">
+                    <li id="head" class="first <?php //nav($L1); ?>">
+                    	<a href="{path='about/index'}">About</a>
+                    	<ul class="dropDown">
+                       	  <li><a href="#">About EMJ</a></li>
+                        	<li><a href="{path='about/what_we_do'}">What We Do</a></li>
+                        	<li><a href="{path='about/how_we_do_it'}">How We Do It</a></li>
+                        	<li><a href="{path='about/who_we_are'}">Who We Are</a></li>
+                        	<li><a href="{path='about/where_we_are'}">Where We Are</a></li>
+                        </ul>
+                    </li>
+                    <li class="<?php //nav($L2); ?>"><a href="{path='products/index'}">Products</a></li>
+                    <li class="<?php //nav($L3); ?>"><a href="{path='processes/index'}">Processing</a></li>
+                    <li class="<?php //nav($L4); ?>"><a href="{path='site/order'}">Order</a></li>
+                    <li class="last <?php //nav($L5); ?>"><a href="#">E-Metals&reg; Login</a></li>
+                </ul>
+            </nav>
+        </div><!-- END .logo -->
+    </div><!-- END .container -->
+</header><!-- END header -->

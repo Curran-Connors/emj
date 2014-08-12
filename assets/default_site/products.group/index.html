@@ -1,0 +1,286 @@
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<?php require_once(ROOT_PATH.'includes/product_placeholder_arrays.php'); ?>
+<?php 
+	// Default Core Variables:
+	if(!isset($_POST['submit_1'])) {
+		//$_POST['submit_1'] 	= 0;
+	}
+	
+	$nav_class 				= '';
+	$family_class			= 'level1 hasValues';
+	$material_class			= '';
+	$shape_class			= '';
+	
+	$family_selected 		= 'Select Family';
+	$family_selected_id		= '';
+	$material_selected 		= 'Material';
+	$material_selected_id	= '';
+	
+	// Family Form:
+	if(isset($_POST['submit_1']) && $_POST['submit_1'] == 1) {
+		
+		$family_selected_id = $_POST['family'];
+		$family_id 			= $family_selected_id - 1;
+		
+		$nav_class 			= 'familySelected';
+		$family_class		= 'level2';
+		$material_class		= 'level1 hasValues';
+		
+		$family_selected 	= $family[$family_id]['title'];
+	}
+	
+	// Family Form:
+	if(isset($_POST['submit_2']) && $_POST['submit_2'] == 1) {
+		$_POST['submit_1'] 	= 0;
+		
+		$family_selected_id 	= $_POST['family'];
+		$family_id 				= $family_selected_id - 1;
+		
+		$material_selected_id 	= $_POST['family'];
+		$material_id 			= $material_selected_id - 1;
+		
+		$nav_class 				= 'materialSelected';
+		$family_class			= 'level2';
+		$material_class			= 'level2';
+		$shape_class			= 'level1 hasValues';
+		
+		$family_selected 		= $family[$family_id]['title'];
+		$material_selected 		= $material[$material_id]['title'];
+	}
+?>
+<?php $L2 = TRUE; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Blue Book | EMJ</title>
+<meta name="description" content="">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        <article class="col-sm-12 content">
+            
+            <div class="col-sm-12 spaced">
+                <div class="pageTitle oneLine group">
+					<div class="col-sm-9 noPadL noMargR">
+  	                  <h1>Products</h1> 
+    				</div>                
+                    <div class="col-sm-3 noPadR noPadL text-right productSearch noMargR">
+               			<input type="search" class="search" placeholder="Search Keywords">
+             		</div>
+                    <div class="clear"></div>
+                </div><!-- END .pageTitle -->
+                
+               
+                
+                <?php /* commented out
+            	<div class="col-sm-8 productsNavWrap noPadL">
+                	<nav class="productsNav <?php echo $nav_class; ?>">
+                    	<ul class="list-inline">
+                        	<li class="family <?php echo $family_class; ?>">
+                            	<a href="#"><span><?php echo $family_selected; ?></span></a>
+                                <form id="familyForm" action="{path='products/index'}" method="post">
+                                    <ul class="dropDown">
+                                        <?php foreach($family as $single) : ?>
+											<li id="<?php echo $single['id']; ?>"><a href="#"><?php echo $single['title']; ?></a></li>
+										<?php endforeach; ?>
+                                    </ul>
+                            		<input type="hidden" name="family" value="<?php echo $family_selected_id; ?>">
+                            		<input type="hidden" name="submit_1" value="">
+                                    <input type="hidden" name="XID" value="{XID_HASH}" />
+                                </form>
+                            </li>
+                        	<li class="material <?php echo $material_class; ?>">
+                            	<a href="#"><span><?php echo $material_selected; ?></span></a>
+                                <form id="materialForm" action="{path='products/index'}" method="post">
+                                    <ul class="dropDown">
+                                        <?php foreach($material as $single) : ?>
+											<li id="<?php echo $single['id']; ?>"><a href="#"><?php echo $single['title']; ?></a></li>
+										<?php endforeach; ?>
+                                    </ul>
+                           			<input type="hidden" name="family" value="<?php echo $family_selected_id; ?>">
+                           			<input type="hidden" name="material" value="<?php echo $material_selected_id; ?>">
+                                    <input type="hidden" name="submit_2" value="">
+                                    <input type="hidden" name="XID" value="{XID_HASH}" />
+                                </form>
+                            </li>
+                        	<li class="shape <?php echo $shape_class; ?>">
+                            	<a href="#"><span>Shape</span></a>
+                               	<form id="shapeForm" action="{path='products/products_results'}" method="post">
+                                    <ul class="dropDown">
+                                        <?php foreach($shape as $single) : ?>
+											<li id="<?php echo $single['id']; ?>"><a href="#"><?php echo $single['title']; ?></a></li>
+										<?php endforeach; ?>
+                                    </ul>
+                            		<input type="hidden" name="family" value="<?php echo $family_selected_id; ?>">
+                           			<input type="hidden" name="material" value="<?php echo $material_selected_id; ?>">
+                           			<input type="hidden" name="shape" value="">
+                                    <input type="hidden" name="submit_3" value="">
+                                    <input type="hidden" name="XID" value="{XID_HASH}" />
+                                </form>
+                            </li>
+                        </ul>
+                    </nav>
+                </div><!-- END .productsNavWrap -->
+                
+             */ ?>
+                
+                <div class="productsList group">
+                	
+                    <?php if(!isset($_POST['submit_1'])) { // show family list ?>
+                    
+						<?php foreach($family as $single) : ?>
+                            <div class="col-sm-3 product family">
+                                <a href="#"  id="<?php echo $single['id']; ?>"><img src="{site_url}<?php echo $single['img']; ?>" class="img-responsive">
+                                <h3><?php echo $single['title']; ?></h3></a>
+                                <p><?php echo $single['excerpt']; ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    	
+						<form id="familyForm" action="{path='products/products_results'}" method="post">
+        					<input type="hidden" name="family" value="">
+            				<input type="hidden" name="submit_3" value="">
+     						<input type="hidden" name="XID" value="{XID_HASH}" />
+    					 </form>
+                        
+					<?php } ?>
+                    
+                    <?php if(isset($_POST['submit_1']) && $_POST['submit_1'] == 1) { // show family results 
+						
+							$title 			= $family[$family_id]['title'];
+							$description 	= $family[$family_id]['description'];
+							$img 			= $family[$family_id]['img'];
+					?>
+                    	                        
+                         <div class="col-sm-12 product family selected">
+                            <div class="col-sm-3 img noPadL">
+                                <img src="{site_url}<?php echo $img; ?>" class="img-responsive">
+                            </div><!-- END .img -->
+                            <div class="col-sm-9 description noPadL">
+                                
+                                <h3><?php echo $title; ?></h3>
+                                <p><?php echo $description; ?></p>
+                                
+                                <!-- *I'd envision this disclaimer being appended upon family selection -->
+                                <div class="disclaimer col-xs-6 noPadL">
+                                    <p>Can't find what you were looking for? <a href="{path='site/contact'}">Contact Us</a></p>
+                                </div><!-- END .disclaimer -->
+                            	
+                                <div class="col-xs-6 noPadR text-right">
+                                	<a class="link" target="_blank" href="https://emetals.rsac.com/eMetals/eMetalsLogin.asp">Login to e-Metals</a>
+                                	<a class="link" href="{path='site/contact'}">Contact us for quote4</a>
+                                </div>
+                            
+                            </div><!-- END .description -->
+                        </div><!-- END .selected.family.product -->
+                    
+					<?php } ?>
+                    
+                     <?php if(isset($_POST['submit_2']) && $_POST['submit_2'] == 1) { // show family results 
+						
+							$title 			= $family[$family_id]['title'];
+							$description 	= $family[$family_id]['description'];
+							$img 			= $family[$family_id]['img'];
+					?>
+                    	                        
+                         <div class="col-sm-12 product family selected">
+                            <div class="col-sm-3 img noPadL">
+                                <img src="{site_url}<?php echo $img; ?>" class="img-responsive">
+                            </div><!-- END .img -->
+                            <div class="col-sm-9 description noPadL">
+                                
+                                <h3><?php echo $title; ?></h3>
+                                <p><?php echo $description; ?></p>
+                                
+                                <!-- *I'd envision this disclaimer being appended upon family selection -->
+                                <div class="disclaimer col-xs-6 noPadL">
+                                    <p>Can't find what you were looking for? <a href="{path='site/contact'}">Contact Us</a></p>
+                                </div><!-- END .disclaimer -->
+                            	
+                                <div class="col-xs-6 noPadR text-right">
+                                	<a class="link" target="_blank" href="https://emetals.rsac.com/eMetals/eMetalsLogin.asp">Login to e-Metals</a>
+                                	<a class="link" href="{path='site/contact'}">Contact us for quote4</a>
+                                </div>
+                            
+                            </div><!-- END .description -->
+                        </div><!-- END .selected.family.product -->
+                    
+					<?php } ?>
+                    
+					<?php 
+					/*<div class="col-sm-3 product family">
+                    	<img src="{site_url}images/product-bar.png" class="img-responsive">
+                    	<h3>Bar</h3>
+                        <p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim.</p>
+                    </div>
+                    
+                    <div class="col-sm-3 product family">
+                    	<img src="{site_url}images/product-tube.png" class="img-responsive">
+                    	<h3>Tube</h3>
+                        <p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim.</p>
+                    </div>
+                    
+                    <div class="col-sm-3 product family">
+                    	<img src="{site_url}images/product-plate.png" class="img-responsive">
+                    	<h3>Plate</h3>
+                        <p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim.</p>
+                    </div>
+                    
+                    <div class="col-sm-3 product family">
+                    	<img src="{site_url}images/product-sheet.png" class="img-responsive">
+                    	<h3>Sheet</h3>
+                        <p>Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec dignissim.</p>
+                    </div>
+					*/ ?>
+                    
+                    <div class="clear"></div>
+                    
+                    <div class="disclaimer">
+                    	<div class="col-xs-6 noPadL">
+                        	<p>Can't find what you were looking for? <a href="{path='site/contact'}">Contact Us</a></p>
+                   		</div>
+                    
+                        <div class="col-xs-6 noPadR text-right">
+                        	<p><a class="link" target="_blank" href="https://emetals.rsac.com/eMetals/eMetalsLogin.asp">Login to e-Metals</a>
+                            &nbsp; &nbsp;<a class="link" href="{path='site/contact/request-quote'}">Contact us for quote</a></p>
+                        </div>
+                    
+                    </div><!-- END .disclaimer -->
+                            	
+                </div><!-- END .productsList -->
+                
+            </div><!-- END .col-sm-12 -->
+            
+        </article><!-- END article.content -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+<?php include(ROOT_PATH.'layouts/footer.php') ?>
+
+</body>
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+<script type="text/javascript">
+$(function(){
+		
+})
+</script>
+</html>

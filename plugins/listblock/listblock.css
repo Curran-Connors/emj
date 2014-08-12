@@ -1,0 +1,66 @@
+/*
+Plugin Name: Listblock by TD
+
+Notes:
+*/
+
+.listBlock { /*background:#E1E1E1;*/ overflow:hidden;}
+
+.listBlock .nav { padding-right:0; }
+.listBlock .nav ul {  }
+.listBlock .nav li {  }
+.listBlock .nav li a { border-bottom:3px solid #E1E1E1;font-size:14px; color:#1B3D93; display:block;padding:15px 26px 14px; position:relative; max-height:80px;}
+.listBlock .nav li a:hover { }
+.listBlock .nav li.selected a, .listBlock .nav li a:hover { color:#fff; background:#E4C26C; text-decoration:none; }
+.listBlock .nav li.selected a span.arrow { display:inline-block; width:10px; height:100%;position:absolute; right:-10px; top:0; background:url(img/arrow.png) no-repeat center center; z-index:100;}
+.listBlock .nav li.last a { border:0; }
+
+.listBlock .wrap { position:relative; padding-left:0;}
+
+.listBlock .listContent { display:none; opacity:0; z-index:0;}
+.listBlock .listContent.selected { display:block; opacity:1; z-index:10;}
+.listBlock .listContent h4 { color:#193D92; font-size:18px; margin-bottom:10px;}
+.listBlock .listContent p { font-size:13px; color:#666;line-height: 21px; }
+
+.listBlock .listContent .img { border-left: 2px solid #E1E1E1; padding-left:0;padding-right: 13px; }
+.listBlock .listContent .img img { padding-left:0; width:100%;}
+
+.listBlock .listContent .slide { padding:20px; }
+
+
+/*
+	RESPONSIVE STYLESHEET
+	ready to go...
+*/
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+	.listBlock .listContent .slide { padding: 15px 20px; }
+	.listBlock .listContent .img { padding-right: 0; }
+	.listBlock .listContent h4 {font-size: 17px; margin-bottom: 6px; }
+	.listBlock .listContent p { font-size: 12px; line-height: 17px; }
+	.listBlock .nav li a { font-size: 13px; padding: 11px 20px 10px; }
+}
+
+@media (max-width: 768px) {
+	.listBlock .nav li a { font-size: 14px; background: #f7f7f7; border-bottom:2px solid #E1E1E1; padding: 15px 20px;}
+	
+	.listBlock li .img { padding-right: 0; padding-left:0;}
+	.listBlock li .img img { width:100%;}
+	.listBlock li.selected  { margin-bottom:6px; }
+	.listBlock li.selected a { border:0; background:#E4C26C url(img/arrow-down-white-mobile.png) no-repeat 95% center !important;}
+	.listBlock li a { border:0; background:#f7f7f7 url(img/arrow-right-gray-mobile.png) no-repeat 95% center !important;}
+	.listBlock li h4 { padding-top:10px; margin-bottom:5px;font-size:18px; color:#193D92;}
+	.listBlock li p { color:#666; margin-bottom:10px;font-size:13px; line-height:20px;}
+	.listBlock li div.slide { border-bottom:3px solid #E4C26C; padding-bottom:15px; background:#F8F8F8; }
+	
+	
+	.listBlock .wrap { display:none; }
+}
+
+@media (max-width: 767px) { 
+
+}

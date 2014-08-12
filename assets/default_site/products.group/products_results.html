@@ -1,0 +1,456 @@
+<?php
+	
+ if(!isset($_POST['submit_3'])) { header("Location: products"); } ?>
+<?php require_once(ROOT_PATH.'includes/initialize.php'); ?>
+<?php require_once(ROOT_PATH.'includes/product_placeholder_arrays.php'); ?>
+<?php 
+	// Default Core Variables:
+	if(!isset($_POST['submit_1'])) {
+		//$_POST['submit_1'] 	= 0;
+	}
+	
+	$nav_class 				= '';
+	$family_class			= 'level1 hasValues';
+	$material_class			= '';
+	$shape_class			= '';
+	
+	$family_selected 		= 'Select Family';
+	$family_selected_id		= '';
+	$material_selected 		= 'Material';
+	$material_selected_id	= '';
+	$shape_selected 		= 'Shape';
+	$shape_selected_id	= '';
+	
+	// Results:
+	if(isset($_POST['submit_3']) && $_POST['submit_3'] == 1) {
+		
+		$family_selected_id 	= $_POST['family'];
+		$family_id 				= $family_selected_id - 1;
+		
+		$material_selected_id 	= $_POST['material'];
+		$material_id 			= $material_selected_id - 1;
+		
+		$shape_selected_id 		= $_POST['shape'];
+		$shape_id 				= $shape_selected_id - 1;
+		
+		$nav_class 				= 'shapeSelected';
+		$family_class			= 'level2';
+		$material_class			= 'level2';
+		$shape_class			= 'level2';
+		
+		$family_selected 		= $family[$family_id]['title'];
+		$material_selected 		= $material[$material_id]['title'];
+		$shape_selected 		= $shape[$shape_id]['title'];
+	}
+?>
+<?php $L2 = TRUE; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Products Results | EMJ</title>
+<meta name="description" content="">
+<meta name="format-detection" content="telephone=no">
+
+<?php include(ROOT_PATH.'layouts/header_assets.php'); ?>
+</head>
+
+<body class="<?php echo $body_class; ?>">
+
+<?php preload(array('img/dropdown-arrow-active.png', 'img/dropdown-arrow.png')); ?>
+
+<?php 
+    $language = $this->EE->config->default_ini['global_vars']['countrycode'];
+
+    include(ROOT_PATH.'layouts/header.php');
+?>
+
+<section class="mainContent secondLevel">
+	<div class="container">
+
+        <article class="col-sm-12 content">
+            
+            <div class="col-sm-12 spaced">
+                <div class="pageTitle oneLine group">
+					<div class="col-sm-9 noPadL noMargR">
+  	                  <h1>Products</h1> 
+    				</div>                
+                    <div class="col-sm-3 noPadR noPadL text-right productSearch noMargR">
+               			<input type="search" class="search" placeholder="Search Keywords">
+             		</div>
+                    <div class="clear"></div>
+                </div><!-- END .pageTitle -->
+                
+                <div class="col-sm-3 noPadL">
+                	<img src="{site_url}images/product-bar.png" class="img-responsive">
+                </div>
+                <div class="col-sm-9 noPadR productResults">
+                	<h3>Bar</h3>
+                	<p>Fusce metus nibh, ullamcorper sit amet molestie in, tristique vitae ante. Donec volutpat mattis euismod. Sed laoreet, lectus dignissim laoreet ornare, nibh augue adipiscing augue, vitae placerat tortor sapien at enim. In dapibus est eget sem congue dapibus. Donec at faucibus enim. Morbi non bibendum massa. Quisque sit amet sapien felis, id fermentum.</p>
+                </div>
+                
+                <div class="clear">&nbsp;</div>
+                
+                <?php /* commented out
+            	<div class="col-sm-8 productsNavWrap noPadL">
+                	<nav class="productsNav <?php echo $nav_class; ?>">
+                    	<ul class="list-inline">
+                        	<li class="family <?php echo $family_class; ?>">
+                            	<a href="#"><span><?php echo $family_selected; ?></span></a>
+                                <form id="familyForm" action="{path='products/index'}" method="post">
+                                <input type="hidden" name="XID" value="{XID_HASH}" />
+                                    <ul class="dropDown">
+                                        <?php foreach($family as $single) : ?>
+											<li id="<?php echo $single['id']; ?>"><a href="#"><?php echo $single['title']; ?></a></li>
+										<?php endforeach; ?>
+                                    </ul>
+                            		<input type="hidden" name="family" value="<?php echo $family_selected_id; ?>">
+                            		<input type="hidden" name="submit_1" value="">
+                                </form>
+                            </li>
+                        	<li class="material <?php echo $material_class; ?>">
+                            	<a href="#"><span><?php echo $material_selected; ?></span></a>
+                                <form id="materialForm" action="{path='products/index'}" method="post">
+                                <input type="hidden" name="XID" value="{XID_HASH}" />
+                                    <ul class="dropDown">
+                                        <?php foreach($material as $single) : ?>
+											<li id="<?php echo $single['id']; ?>"><a href="#"><?php echo $single['title']; ?></a></li>
+										<?php endforeach; ?>
+                                    </ul>
+                           			<input type="hidden" name="family" value="<?php echo $family_selected_id; ?>">
+                           			<input type="hidden" name="material" value="<?php echo $material_selected_id; ?>">
+                                    <input type="hidden" name="submit_2" value="">
+                                </form>
+                            </li>
+                        	<li class="shape <?php echo $shape_class; ?>">
+                            	<a href="#"><span><?php echo $shape_selected; ?><span></a>
+                               	<form id="shapeForm" action="{path='products/products_results'}" method="post">
+                                <input type="hidden" name="XID" value="{XID_HASH}" />
+                                    <ul class="dropDown">
+                                        <?php foreach($shape as $single) : ?>
+											<li id="<?php echo $single['id']; ?>"><a href="#"><?php echo $single['title']; ?></a></li>
+										<?php endforeach; ?>
+                                    </ul>
+                            		<input type="hidden" name="family" value="<?php echo $family_selected_id; ?>">
+                           			<input type="hidden" name="material" value="<?php echo $material_selected_id; ?>">
+                           			<input type="hidden" name="shape" value="<?php echo $shape_selected_id; ?>">
+                                    <input type="hidden" name="submit_3" value="">
+                                </form>
+                            </li>
+                        </ul>
+                    </nav>
+                </div><!-- END .productsNavWrap -->
+                <div class="col-sm-4 noPadR noPadL text-right productSearch">
+                            <input type="search" class="search" placeholder="Search Keywords">
+                        </div>
+                */ ?>
+                
+                <div class="productsList group">
+                	
+                    	<div class="table-responsive results">
+                  
+                            <?php /* CHANGE */  ?>
+                            <?php 
+								// Any mobile device, excluding tablets.
+								if( $detect->isMobile() && !$detect->isTablet() ) { 
+							?>
+								<div class="singleProduct group">
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Family</div>
+                                        <div class="col-xs-6 value">Bar</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Material</div>
+                                        <div class="col-xs-6 value">Carbon</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Shape</div>
+                                        <div class="col-xs-6 value">Round</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Grade</div>
+                                        <div class="col-xs-6 value">.15MAX</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Condition</div>
+                                        <div class="col-xs-6 value">CF D</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Size in Inches</div>
+                                        <div class="col-xs-6 value">0.0239 / 48.0000 / 120.0000</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">&nbsp;</div>
+                                        <div class="col-xs-6 viewDetails"><a href="#">View Details</a></div>
+                                    </div><!-- END .productRow -->
+                                    
+                                </div><!-- END .singleProduct -->
+                                
+                                <div class="singleProduct group">
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Family</div>
+                                        <div class="col-xs-6 value">Bar</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Material</div>
+                                        <div class="col-xs-6 value">Carbon</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Shape</div>
+                                        <div class="col-xs-6 value">Round</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Grade</div>
+                                        <div class="col-xs-6 value">.15MAX</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Condition</div>
+                                        <div class="col-xs-6 value">CF D</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Size in Inches</div>
+                                        <div class="col-xs-6 value">0.0239 / 48.0000 / 120.0000</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">&nbsp;</div>
+                                        <div class="col-xs-6 viewDetails"><a href="#">View Details</a></div>
+                                    </div><!-- END .productRow -->
+                                    
+                                </div><!-- END .singleProduct -->
+                                
+                                <div class="singleProduct group">
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Family</div>
+                                        <div class="col-xs-6 value">Bar</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Material</div>
+                                        <div class="col-xs-6 value">Carbon</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Shape</div>
+                                        <div class="col-xs-6 value">Round</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Grade</div>
+                                        <div class="col-xs-6 value">.15MAX</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Condition</div>
+                                        <div class="col-xs-6 value">CF D</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Size in Inches</div>
+                                        <div class="col-xs-6 value">0.0239 / 48.0000 / 120.0000</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">&nbsp;</div>
+                                        <div class="col-xs-6 viewDetails"><a href="#">View Details</a></div>
+                                    </div><!-- END .productRow -->
+                                    
+                                </div><!-- END .singleProduct -->
+                                
+                                <div class="singleProduct group">
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Family</div>
+                                        <div class="col-xs-6 value">Bar</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Material</div>
+                                        <div class="col-xs-6 value">Carbon</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Shape</div>
+                                        <div class="col-xs-6 value">Round</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Grade</div>
+                                        <div class="col-xs-6 value">.15MAX</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Condition</div>
+                                        <div class="col-xs-6 value">CF D</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Size in Inches</div>
+                                        <div class="col-xs-6 value">0.0239 / 48.0000 / 120.0000</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">&nbsp;</div>
+                                        <div class="col-xs-6 viewDetails"><a href="#">View Details</a></div>
+                                    </div><!-- END .productRow -->
+                                    
+                                </div><!-- END .singleProduct -->
+                                
+                                <div class="singleProduct group">
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Family</div>
+                                        <div class="col-xs-6 value">Bar</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Material</div>
+                                        <div class="col-xs-6 value">Carbon</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Shape</div>
+                                        <div class="col-xs-6 value">Round</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Grade</div>
+                                        <div class="col-xs-6 value">.15MAX</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Condition</div>
+                                        <div class="col-xs-6 value">CF D</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">Size in Inches</div>
+                                        <div class="col-xs-6 value">0.0239 / 48.0000 / 120.0000</div>
+                                    </div><!-- END .productRow -->
+                                    
+                                    <div class="col-xs-12 productRow">
+                                        <div class="col-xs-6 category">&nbsp;</div>
+                                        <div class="col-xs-6 viewDetails"><a href="#">View Details</a></div>
+                                    </div><!-- END .productRow -->
+                                    
+                                </div><!-- END .singleProduct -->
+                                    
+							<?php } else { // NOT MOBILE ?>
+                            		
+                                    <table class="table">
+                          		
+                                <thead>
+                                	<th>Family</th>
+                                	<th>Material</th>
+                                	<th>Shape</th>
+                                	<th>Grade</th>
+                                	<th class="text-right">&nbsp;</th>
+                                </thead>
+                                
+                                <tbody>
+                                	<tr>
+                                    	<td>Bar</td>
+                                    	<td>Carbon</td>
+                                    	<td>Round</td>
+                                    	<td>.15 MAX</td>
+                                    	<td class="text-right"><a href="#">View Details</a></td>
+                                    </tr>
+                                    <tr>
+                                    	<td>Bar</td>
+                                    	<td>Carbon</td>
+                                    	<td>Round</td>
+                                    	<td>.15 MAX</td>
+                                    	<td class="text-right"><a href="#">View Details</a></td>
+                                    </tr>
+                                    <tr>
+                                    	<td>Bar</td>
+                                    	<td>Carbon</td>
+                                    	<td>Round</td>
+                                    	<td>.15 MAX</td>
+                                    	<td class="text-right"><a href="#">View Details</a></td>
+                                    </tr>
+                                    <tr>
+                                    	<td>Bar</td>
+                                    	<td>Carbon</td>
+                                    	<td>Round</td>
+                                    	<td>.15 MAX</td>
+                                    	<td class="text-right"><a href="#">View Details</a></td>
+                                    </tr>
+                                    <tr>
+                                    	<td>Bar</td>
+                                    	<td>Carbon</td>
+                                    	<td>Round</td>
+                                    	<td>.15 MAX</td>
+                                    	<td class="text-right"><a href="#">View Details</a></td>
+                                    </tr>
+                                    <tr>
+                                    	<td>Bar</td>
+                                    	<td>Carbon</td>
+                                    	<td>Round</td>
+                                    	<td>.15 MAX</td>
+                                    	<td class="text-right"><a href="#">View Details</a></td>
+                                    </tr>
+                                </tbody>
+                                
+                        	</table>
+                                    
+                            <?php } ?>
+                            
+                            <?php /* END OF CHANGE */  ?>
+                            
+                             
+                            <nav class="paginationNav col-xs-6 noPadL">
+                            	<ul class="list-inline">
+                                	<li id="first" class="gray"><a href="#"><img src="{site_url}img/arrow-left-gray.png"> First</a></li>
+                                	<li id="previous" class="gray"><a href="#"><img src="{site_url}img/arrow-left-gray.png"> Previous</a></li>
+                                	
+                                    <li class="currentPage"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    
+                                    <li id="next" class="gold"><a href="#">Next <img src="{site_url}img/arrow-right-gold.png"></a></li>
+                                	<li id="last" class="gold"><a href="#">Last <img src="{site_url}img/arrow-right-gold.png"></a></li>
+                                </ul>
+                            </nav><!-- END .pagination -->
+                            
+                            <div class="col-xs-6 noPadR text-right">
+                        	<p><a class="link" target="_blank" href="https://emetals.rsac.com/eMetals/eMetalsLogin.asp">Login to e-Metals</a>
+                            &nbsp; &nbsp;<a class="link" href="{path='site/contact/request-quote'}">Contact us for quote</a></p>
+                        </div>
+                        <div class="clear"></div>
+                            
+                            <div class="disclaimer hideOnDesktop">
+                            	<p>Can't find what you were looking for? <a href="{path='site/contact'}">Contact Us</a></p>
+                            </div><!-- END .disclaimer -->
+                        </div><!-- END .results -->
+                </div><!-- END .productsList -->
+                
+            </div><!-- END .col-sm-12 -->
+            
+        </article><!-- END article.content -->
+    </div><!-- END .container -->
+</section><!-- END section.slider -->
+
+<?php include(ROOT_PATH.'layouts/footer.php') ?>
+
+</body>
+<?php include(ROOT_PATH.'layouts/footer_assets.php'); ?>
+
+<script type="text/javascript">
+$(function(){
+})
+</script>
+</html>
